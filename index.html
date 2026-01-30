@@ -233,7 +233,13 @@
             fields.forEach(field => {
                 const element = document.getElementById(field);
                 if (element && element.value.trim()) {
-                    params.append(field, element.value.trim());
+                    let value = element.value.trim();
+                    // Convert date from yyyy-mm-dd to dd/mm/yyyy
+                    if (field === 'frm-date-of-birth' && value) {
+                        const [year, month, day] = value.split('-');
+                        value = `${day}/${month}/${year}`;
+                    }
+                    params.append(field, value);
                 }
             });
 
