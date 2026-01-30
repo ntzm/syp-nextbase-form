@@ -85,13 +85,6 @@
         #output a {
             color: #0066cc;
         }
-        .copy-btn {
-            background: #28a745;
-            margin-left: 10px;
-        }
-        .copy-btn:hover {
-            background: #218838;
-        }
     </style>
 </head>
 <body>
@@ -192,13 +185,7 @@
 
         <div class="form-group">
             <label for="gender">Gender</label>
-            <select id="gender" name="gender">
-                <option value="">-- Select --</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-                <option value="Prefer not to say">Prefer not to say</option>
-            </select>
+            <input type="text" id="gender" name="gender">
         </div>
 
         <div class="form-group">
@@ -207,7 +194,6 @@
         </div>
 
         <button type="button" onclick="generateLink()">Generate Link</button>
-        <button type="button" class="copy-btn" onclick="copyLink()">Copy Link</button>
     </form>
 
     <div id="output">
@@ -261,25 +247,6 @@
             outputDiv.style.display = 'block';
         }
 
-        function copyLink() {
-            const linkElement = document.getElementById('generated-link');
-            if (linkElement.href && linkElement.href !== '#') {
-                navigator.clipboard.writeText(linkElement.href).then(() => {
-                    alert('Link copied to clipboard!');
-                }).catch(() => {
-                    // Fallback for older browsers
-                    const textArea = document.createElement('textarea');
-                    textArea.value = linkElement.href;
-                    document.body.appendChild(textArea);
-                    textArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textArea);
-                    alert('Link copied to clipboard!');
-                });
-            } else {
-                alert('Please generate a link first.');
-            }
-        }
     </script>
 </body>
 </html>
