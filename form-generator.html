@@ -99,16 +99,10 @@
     <p>Fill in the details below to generate a prefilled form link.</p>
 
     <form id="generator">
-        <h2>Signature & Date</h2>
-        <div class="row">
-            <div class="form-group">
-                <label for="signature">Signature (typed name)</label>
-                <input type="text" id="signature" name="signature">
-            </div>
-            <div class="form-group">
-                <label for="frm-date-today">Today's Date</label>
-                <input type="date" id="frm-date-today" name="frm-date-today">
-            </div>
+        <h2>Signature</h2>
+        <div class="form-group">
+            <label for="signature">Signature (typed name)</label>
+            <input type="text" id="signature" name="signature">
         </div>
 
         <h2>Your Details</h2>
@@ -136,11 +130,7 @@
 
         <div class="form-group">
             <label for="preferredContact">Preferred Contact Method</label>
-            <select id="preferredContact" name="preferredContact">
-                <option value="">-- Select --</option>
-                <option value="Email">Email</option>
-                <option value="Phone">Phone</option>
-            </select>
+            <input type="text" id="preferredContact" name="preferredContact" placeholder="e.g. Email, Phone">
         </div>
 
         <div class="form-group">
@@ -172,15 +162,7 @@
         <div class="row">
             <div class="form-group">
                 <label for="age">Age Category</label>
-                <select id="age" name="age">
-                    <option value="">-- Select --</option>
-                    <option value="18-24">18-24</option>
-                    <option value="25-34">25-34</option>
-                    <option value="35-44">35-44</option>
-                    <option value="45-54">45-54</option>
-                    <option value="55-64">55-64</option>
-                    <option value="65+">65+</option>
-                </select>
+                <input type="text" id="age" name="age" placeholder="e.g. 16, 17, 18 or over">
             </div>
             <div class="form-group">
                 <label for="frm-date-of-birth">Date of Birth</label>
@@ -225,9 +207,6 @@
     </div>
 
     <script>
-        // Set today's date as default
-        document.getElementById('frm-date-today').valueAsDate = new Date();
-
         function generateLink() {
             const baseUrl = 'https://secureform.nextbase.co.uk/';
             const params = new URLSearchParams();
@@ -238,7 +217,6 @@
             // List of field IDs to include
             const fields = [
                 'signature',
-                'frm-date-today',
                 'first-name',
                 'last-name',
                 'email',
