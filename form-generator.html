@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYP Form Link Generator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #444;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 3px rgba(0,102,204,0.3);
+        }
+        .row {
+            display: flex;
+            gap: 15px;
+        }
+        .row .form-group {
+            flex: 1;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #0055aa;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            word-break: break-all;
+            display: none;
+        }
+        #output a {
+            color: #0066cc;
+        }
+        .copy-btn {
+            background: #28a745;
+            margin-left: 10px;
+        }
+        .copy-btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>SYP Dashcam Form Link Generator</h1>
+    <p>Fill in the details below to generate a prefilled form link.</p>
+
+    <form id="generator">
+        <h2>Signature & Date</h2>
+        <div class="row">
+            <div class="form-group">
+                <label for="signature">Signature (typed name)</label>
+                <input type="text" id="signature" name="signature">
+            </div>
+            <div class="form-group">
+                <label for="frm-date-today">Today's Date</label>
+                <input type="date" id="frm-date-today" name="frm-date-today">
+            </div>
+        </div>
+
+        <h2>Your Details</h2>
+        <div class="row">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="preferredContact">Preferred Contact Method</label>
+            <select id="preferredContact" name="preferredContact">
+                <option value="">-- Select --</option>
+                <option value="Email">Email</option>
+                <option value="Phone">Phone</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="address1">Address Line 1</label>
+            <input type="text" id="address1" name="address1">
+        </div>
+
+        <div class="form-group">
+            <label for="address2">Address Line 2</label>
+            <input type="text" id="address2" name="address2">
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="addresscounty">County</label>
+                <input type="text" id="addresscounty" name="addresscounty">
+            </div>
+            <div class="form-group">
+                <label for="addresspc">Postcode</label>
+                <input type="text" id="addresspc" name="addresspc">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <input type="text" id="occupation" name="occupation">
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="age">Age Category</label>
+                <select id="age" name="age">
+                    <option value="">-- Select --</option>
+                    <option value="18-24">18-24</option>
+                    <option value="25-34">25-34</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45-54">45-54</option>
+                    <option value="55-64">55-64</option>
+                    <option value="65+">65+</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="frm-date-of-birth">Date of Birth</label>
+                <input type="date" id="frm-date-of-birth" name="frm-date-of-birth">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label for="place-of-birth">Place of Birth</label>
+                <input type="text" id="place-of-birth" name="place-of-birth">
+            </div>
+            <div class="form-group">
+                <label for="former-name">Former/Maiden Name(s)</label>
+                <input type="text" id="former-name" name="former-name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+                <option value="">-- Select --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dates-unavailiable">Dates Unavailable (next 6 months)</label>
+            <textarea id="dates-unavailiable" name="dates-unavailiable" rows="2"></textarea>
+        </div>
+
+        <button type="button" onclick="generateLink()">Generate Link</button>
+        <button type="button" class="copy-btn" onclick="copyLink()">Copy Link</button>
+    </form>
+
+    <div id="output">
+        <strong>Generated Link:</strong><br><br>
+        <a id="generated-link" href="#" target="_blank"></a>
+    </div>
+
+    <script>
+        // Set today's date as default
+        document.getElementById('frm-date-today').valueAsDate = new Date();
+
+        function generateLink() {
+            const baseUrl = 'https://secureform.nextbase.co.uk/';
+            const params = new URLSearchParams();
+
+            // Always include location
+            params.append('location', 'SouthYorkshire');
+
+            // List of field IDs to include
+            const fields = [
+                'signature',
+                'frm-date-today',
+                'first-name',
+                'last-name',
+                'email',
+                'phone',
+                'preferredContact',
+                'address1',
+                'address2',
+                'addresscounty',
+                'addresspc',
+                'occupation',
+                'age',
+                'frm-date-of-birth',
+                'place-of-birth',
+                'former-name',
+                'gender',
+                'dates-unavailiable'
+            ];
+
+            fields.forEach(field => {
+                const element = document.getElementById(field);
+                if (element && element.value.trim()) {
+                    params.append(field, element.value.trim());
+                }
+            });
+
+            const fullUrl = baseUrl + '?' + params.toString();
+
+            const outputDiv = document.getElementById('output');
+            const linkElement = document.getElementById('generated-link');
+
+            linkElement.href = fullUrl;
+            linkElement.textContent = fullUrl;
+            outputDiv.style.display = 'block';
+        }
+
+        function copyLink() {
+            const linkElement = document.getElementById('generated-link');
+            if (linkElement.href && linkElement.href !== '#') {
+                navigator.clipboard.writeText(linkElement.href).then(() => {
+                    alert('Link copied to clipboard!');
+                }).catch(() => {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = linkElement.href;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('Link copied to clipboard!');
+                });
+            } else {
+                alert('Please generate a link first.');
+            }
+        }
+    </script>
+</body>
+</html>
